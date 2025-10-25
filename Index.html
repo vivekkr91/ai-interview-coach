@@ -330,7 +330,7 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Click "Start Interview"</h3>
-                        <p>You'll be taken to our AI Interview Coach powered by Google's advanced AI</p>
+                        <p>You'll be taken to your personal AI Interview Coach powered by Google Gemini</p>
                     </div>
                 </div>
 
@@ -377,7 +377,7 @@
 
         <div class="footer">
             <p>Built with ❤️ by Vivek Kumar for IT students preparing for their dream job</p>
-            <p>Questions or feedback? <a href="mailto:your.email@example.com">Contact me</a></p>
+            <p>Questions or feedback? <a href="mailto:vivek888gaya@gmail.com">Contact me</a></p>
             <p style="margin-top: 20px; font-size: 0.9em;">🔒 Your privacy matters. We don't store your interview responses.</p>
         </div>
     </div>
@@ -393,7 +393,8 @@
 
     <script>
         // === CONFIGURATION ===
-        const aiStudioLink = "https://aistudio.google.com/app/prompts/new_chat"; // Replace with your Google AI Studio link when ready
+        // Your Gemini Gem Interview Coach Link
+        const aiStudioLink = "https://gemini.google.com/gem/1l3D1sm0buVVO2wQIBGj1xgvawFAGw67g";
         const feedbackFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSdHSHwtypUdZhzLlx5YP4Jgjgg4cNHYHttpExMMBSwrAhTGMQ/viewform?usp=dialog";
         
         // === ANALYTICS TRACKING ===
@@ -415,50 +416,31 @@
                 button_location: 'main_cta'
             });
             
-            const userConfirmed = confirm(
-                "🎯 You're about to start your AI Interview!\n\n" +
-                "📋 Quick Instructions:\n" +
-                "1. You'll be taken to Google AI Studio\n" +
-                "2. Sign in with your Google account (free)\n" +
-                "3. Copy and paste the AI Interview Coach prompt\n" +
-                "4. The AI will ask you 5 personalization questions\n" +
-                "5. Then your interview begins!\n" +
-                "6. Takes 20-30 minutes\n\n" +
-                "Note: You'll need the prompt - contact Vivek if you don't have it!\n\n" +
-                "Click OK to continue!"
-            );
+            // Open in new tab immediately (this fixes the blocking error!)
+            window.open(aiStudioLink, '_blank', 'noopener,noreferrer');
             
-            if (userConfirmed) {
-                trackEvent('interview_started', {
-                    timestamp: new Date().toISOString()
-                });
-                
-                window.open(aiStudioLink, '_blank');
-                
-                setTimeout(() => {
-                    showFeedbackPrompt();
-                }, 3000);
-            }
-        }
-        
-        function showFeedbackPrompt() {
-            const wantsFeedback = confirm(
-                "📝 After completing your interview, we'd love your feedback!\n\n" +
-                "Would you like to fill a quick 2-minute survey?\n\n" +
-                "Click OK to open the feedback form (you can fill it after your interview)"
-            );
+            trackEvent('interview_started', {
+                timestamp: new Date().toISOString()
+            });
             
-            if (wantsFeedback) {
-                trackEvent('feedback_form_opened');
-                window.open(feedbackFormLink, '_blank');
-            }
+            // Show feedback prompt after a delay
+            setTimeout(() => {
+                const wantsFeedback = confirm(
+                    "📝 After completing your interview, we'd love your feedback!\n\n" +
+                    "Would you like to bookmark the feedback form?\n\n" +
+                    "(You can fill it after your interview)"
+                );
+                
+                if (wantsFeedback) {
+                    trackEvent('feedback_form_opened');
+                    window.open(feedbackFormLink, '_blank', 'noopener,noreferrer');
+                }
+            }, 2000);
         }
         
         function registerInterest() {
             trackEvent('register_interest_clicked');
-            
-            alert("📋 You'll be taken to our registration form.\n\nWe'll notify you about updates and new features!");
-            window.open(feedbackFormLink, '_blank');
+            window.open(feedbackFormLink, '_blank', 'noopener,noreferrer');
         }
         
         // Track scroll depth
