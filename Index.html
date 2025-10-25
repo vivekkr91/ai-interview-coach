@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Coach - Practice Mock Interviews | By Vivek Kumar</title>
+    <meta name="description" content="Free AI-powered interview coach for IT students. Practice mock interviews for TCS, Infosys, startups with instant feedback.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .hero-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 18px 50px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.3em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .how-it-works {
+            margin: 50px 0;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .how-it-works h2 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+
+        .steps {
+            display: grid;
+            gap: 25px;
+        }
+
+        .step {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.3em;
+        }
+
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-size: 1.2em;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .final-cta {
+            text-align: center;
+            margin: 50px 0;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+            color: #999;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .hero-section h2 {
+                font-size: 1.5em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 AI Interview Coach</h1>
+            <p class="subtitle">Master Your Interview Skills with AI-Powered Practice</p>
+        </div>
+
+        <div class="hero-section">
+            <span class="badge">✨ FREE BETA - LIMITED SPOTS</span>
+            <h2>Get Interview-Ready in 30 Days</h2>
+            <p>Personalized mock interviews • Instant feedback • Built for Indian IT students</p>
+            <a href="#start" class="cta-button" onclick="startInterview(); return false;">🚀 START FREE INTERVIEW</a>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Personalized Questions</h3>
+                <p>Get questions tailored to your target company - TCS, Infosys, startups, or product companies</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Instant Feedback</h3>
+                <p>Receive detailed feedback after every answer with specific improvement tips</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Performance Reports</h3>
+                <p>Comprehensive analysis of your technical skills, communication, and confidence</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Complete Coverage</h3>
+                <p>Technical questions, coding problems, project discussions, and HR rounds</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Practice Anytime</h3>
+                <p>Available 24/7. Practice at your own pace, as many times as you want</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🆓</div>
+                <h3>Completely Free</h3>
+                <p>No hidden costs. Just sign in with Google and start practicing immediately</p>
+            </div>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Click "Start Interview"</h3>
+                        <p>You'll be taken to our AI Interview Coach powered by Google's advanced AI</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Answer Personalization Questions</h3>
+                        <p>Tell us your target company, role, and biggest fears. We'll customize everything for you</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Complete Your Mock Interview</h3>
+                        <p>Go through technical questions, coding problems, project discussions, and HR rounds (20-30 mins)</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Get Your Performance Report</h3>
+                        <p>Receive detailed feedback with scores, strengths, improvement areas, and a personalized study plan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <p class="testimonial-text">"This is exactly what I needed! The personalized feedback helped me understand my weak areas. After 3 practice sessions, I felt much more confident!"</p>
+            <p class="testimonial-author">- Beta Tester, Final Year Student</p>
+        </div>
+
+        <div class="final-cta">
+            <h2>Ready to Ace Your Interview?</h2>
+            <p>Join hundreds of students already practicing with AI Interview Coach</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#start" class="cta-button" onclick="startInterview(); return false;">🎯 START FREE INTERVIEW</a>
+                <a href="#register" class="cta-button secondary" onclick="registerInterest(); return false;">📋 REGISTER INTEREST</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.95em; opacity: 0.9;">⚡ Takes only 20-30 minutes • No credit card required</p>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ by Vivek Kumar for IT students preparing for their dream job</p>
+            <p>Questions or feedback? <a href="mailto:your.email@example.com">Contact me</a></p>
+            <p style="margin-top: 20px; font-size: 0.9em;">🔒 Your privacy matters. We don't store your interview responses.</p>
+        </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VR31K9T1WS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VR31K9T1WS');
+    </script>
+
+    <script>
+        // === CONFIGURATION ===
+        const aiStudioLink = "https://aistudio.google.com/app/prompts/new_chat"; // Replace with your Google AI Studio link when ready
+        const feedbackFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSdHSHwtypUdZhzLlx5YP4Jgjgg4cNHYHttpExMMBSwrAhTGMQ/viewform?usp=dialog";
+        
+        // === ANALYTICS TRACKING ===
+        function trackEvent(eventName, eventData = {}) {
+            console.log('Event tracked:', eventName, eventData);
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, eventData);
+            }
+        }
+        
+        // Track page view
+        trackEvent('page_view', {
+            page_title: 'AI Interview Coach Landing Page'
+        });
+        
+        // === MAIN FUNCTIONS ===
+        function startInterview() {
+            trackEvent('start_interview_clicked', {
+                button_location: 'main_cta'
+            });
+            
+            const userConfirmed = confirm(
+                "🎯 You're about to start your AI Interview!\n\n" +
+                "📋 Quick Instructions:\n" +
+                "1. You'll be taken to Google AI Studio\n" +
+                "2. Sign in with your Google account (free)\n" +
+                "3. Copy and paste the AI Interview Coach prompt\n" +
+                "4. The AI will ask you 5 personalization questions\n" +
+                "5. Then your interview begins!\n" +
+                "6. Takes 20-30 minutes\n\n" +
+                "Note: You'll need the prompt - contact Vivek if you don't have it!\n\n" +
+                "Click OK to continue!"
+            );
+            
+            if (userConfirmed) {
+                trackEvent('interview_started', {
+                    timestamp: new Date().toISOString()
+                });
+                
+                window.open(aiStudioLink, '_blank');
+                
+                setTimeout(() => {
+                    showFeedbackPrompt();
+                }, 3000);
+            }
+        }
+        
+        function showFeedbackPrompt() {
+            const wantsFeedback = confirm(
+                "📝 After completing your interview, we'd love your feedback!\n\n" +
+                "Would you like to fill a quick 2-minute survey?\n\n" +
+                "Click OK to open the feedback form (you can fill it after your interview)"
+            );
+            
+            if (wantsFeedback) {
+                trackEvent('feedback_form_opened');
+                window.open(feedbackFormLink, '_blank');
+            }
+        }
+        
+        function registerInterest() {
+            trackEvent('register_interest_clicked');
+            
+            alert("📋 You'll be taken to our registration form.\n\nWe'll notify you about updates and new features!");
+            window.open(feedbackFormLink, '_blank');
+        }
+        
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > maxScroll) {
+                maxScroll = Math.floor(scrollPercent / 25) * 25;
+                if (maxScroll > 0) {
+                    trackEvent('scroll_depth', {
+                        depth: maxScroll + '%'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
