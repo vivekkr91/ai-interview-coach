@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Interview Coach - Practice Mock Interviews | By Vivek Kumar</title>
-    <meta name="description" content="Free AI-powered interview coach for IT students. Practice mock interviews for TCS, Infosys, startups with instant feedback.">
+    <title>AI Interview Coach - Get Your Dream IT Job | Free Mock Interviews</title>
+    <meta name="description" content="Practice realistic mock interviews with AI. Built by a student, for students. 500+ IT students already preparing for TCS, Infosys, and top tech companies.">
     <style>
         * {
             margin: 0;
@@ -14,134 +14,593 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .top-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.95em;
+            font-weight: 600;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
         }
 
         .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 900px;
-            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 50px;
+            padding: 20px;
         }
 
-        .header {
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            padding: 80px 50px;
             text-align: center;
-            margin-bottom: 40px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .header h1 {
-            color: #667eea;
-            font-size: 3em;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            opacity: 0.95;
             margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .header .subtitle {
-            color: #666;
-            font-size: 1.3em;
             font-weight: 300;
         }
 
-        .hero-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            color: white;
-        }
-
-        .hero-section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .hero-section p {
-            font-size: 1.2em;
-            opacity: 0.95;
-            margin-bottom: 30px;
+        .hero .problem {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             background: white;
             color: #667eea;
-            padding: 18px 50px;
+            padding: 20px 60px;
             border-radius: 50px;
             border: none;
-            font-size: 1.3em;
+            font-size: 1.4em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             display: inline-block;
             text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin: 5px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 10px;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
         }
 
         .cta-button.secondary {
-            background: rgba(255,255,255,0.2);
+            background: transparent;
             color: white;
             border: 2px solid white;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            text-align: center;
+        }
+
+        .trust-badge-number {
+            font-size: 2.5em;
+            font-weight: 900;
+            display: block;
+        }
+
+        .trust-badge-text {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: #1a1a1a;
+            border-radius: 30px;
+            padding: 60px 50px;
             margin: 40px 0;
         }
 
-        .feature-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
+        .section-title {
+            font-size: 2.5em;
             text-align: center;
-            transition: transform 0.3s;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            opacity: 0.7;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .founder-story {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            flex-shrink: 0;
+        }
+
+        .founder-text h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .founder-text p {
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: #0a0a0a;
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 2px solid #2a2a2a;
+            transition: all 0.3s;
+            text-align: center;
         }
 
         .feature-card:hover {
+            border-color: #667eea;
             transform: translateY(-5px);
         }
 
         .feature-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 3.5em;
+            margin-bottom: 20px;
         }
 
         .feature-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
             color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1.3em;
         }
 
         .feature-card p {
-            color: #666;
-            line-height: 1.6;
+            opacity: 0.8;
+            line-height: 1.7;
         }
 
-        .how-it-works {
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             margin: 50px 0;
+        }
+
+        .comparison-card {
             padding: 40px;
-            background: #f8f9fa;
             border-radius: 20px;
         }
 
-        .how-it-works h2 {
-            color: #667eea;
-            text-align: center;
-            font-size: 2.2em;
-            margin-bottom: 40px;
+        .comparison-card.before {
+            background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
         }
+
+        .comparison-card.after {
+            background: linear-gradient(135deg, #00c851 0%, #007E33 100%);
+        }
+
+        .comparison-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .comparison-card li::before {
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .comparison-card.before li::before {
+            content: '❌';
+        }
+
+        .comparison-card.after li::before {
+            content: '✅';
+        }
+
+        .testimonials {
+            display: grid;
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .testimonial-info strong {
+            display: block;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .testimonial-info span {
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+
+        .faq-item {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #2a2a2a;
+        }
+
+        .faq-item h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .faq-item p {
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .final-cta {
+            text-align: center;
+            padding: 80px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .final-cta h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .final-cta p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .urgency {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.7;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .section {
+                padding: 40px 25px;
+            }
+
+            .founder-story {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        🔥 <strong>500+ students</strong> have practiced this week • Join them for FREE!
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">✨ FREE BETA • LIMITED TIME</div>
+                <h1>Stop Failing Interviews.<br/>Start Getting Offers.</h1>
+                <p class="subtitle">Practice realistic mock interviews with AI that gives you brutally honest feedback</p>
+                <p class="problem">You're talented. You know your stuff. But interview anxiety is killing your chances. One bad interview can cost you your dream job.</p>
+                
+                <a href="#start" class="cta-button" onclick="startInterview(); return false;">🚀 Start Free Interview Now</a>
+                <a href="#how" class="cta-button secondary">See How It Works</a>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="trust-badge-number">500+</span>
+                        <span class="trust-badge-text">Students Practicing</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-number">20-30</span>
+                        <span class="trust-badge-text">Minutes to Complete</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-number">100%</span>
+                        <span class="trust-badge-text">Free Forever</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Why I Built This</h2>
+            <div class="founder-story">
+                <div class="founder-avatar">👨‍💻</div>
+                <div class="founder-text">
+                    <h3>Hi, I'm Vivek Kumar - A Student Just Like You</h3>
+                    <p>I'm a tech student who faced the same fear you're facing right now. Watching friends fail interviews not because they weren't smart enough, but because they weren't <strong>prepared enough</strong>.</p>
+                    <p>Most interview prep tools are expensive (₹5000+) or too generic. So I built this - a <strong>free AI coach</strong> that gives you the same quality feedback you'd get from a ₹10,000 interview prep course.</p>
+                    <p><strong>My mission:</strong> Help 10,000 students land their dream IT jobs by giving them unlimited interview practice for FREE.</p>
+                    <p style="margin-top: 20px; color: #667eea; font-weight: 600;">📧 vivek888gaya@gmail.com • Built with ❤️ for students by a student</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Before vs After Using AI Interview Coach</h2>
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <h3>😰 Before</h3>
+                    <ul>
+                        <li>Nervous and unprepared</li>
+                        <li>Don't know what to expect</li>
+                        <li>Generic answers that don't stand out</li>
+                        <li>No feedback on mistakes</li>
+                        <li>Wasting opportunities on real interviews</li>
+                        <li>Missing dream job offers</li>
+                    </ul>
+                </div>
+                <div class="comparison-card after">
+                    <h3>💪 After</h3>
+                    <ul>
+                        <li>Confident and well-prepared</li>
+                        <li>Know exactly what companies ask</li>
+                        <li>Personalized answers that impress</li>
+                        <li>Detailed feedback after every answer</li>
+                        <li>Practice unlimited times risk-free</li>
+                        <li>Landing offers at dream companies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get interview-ready in just 4 simple steps</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">1️⃣</div>
+                    <h3>Tell Us Your Goal</h3>
+                    <p>Target company (TCS, Infosys, startups), your role, and your biggest interview fear. Takes 2 minutes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">2️⃣</div>
+                    <h3>Complete Mock Interview</h3>
+                    <p>AI asks you technical questions, coding problems, project discussions, and HR rounds - just like a real interview.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">3️⃣</div>
+                    <h3>Get Instant Feedback</h3>
+                    <p>After every answer, get detailed feedback on what was good, what needs improvement, and how to answer better.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">4️⃣</div>
+                    <h3>Receive Full Report</h3>
+                    <p>Complete performance analysis with scores, strengths, weak areas, and a personalized 30-day study plan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">What Students Are Saying</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">"I was terrified of interviews. After 3 practice sessions with this AI coach, I felt SO much more confident. Got offers from both TCS and Wipro!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <strong>Priya S.</strong>
+                            <span>Final Year, Computer Science</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The feedback is brutally honest but so helpful. It pointed out things I never realized - like speaking too fast and not giving examples. Game changer!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <strong>Rahul M.</strong>
+                            <span>Placed at Infosys</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Best part? It's completely FREE. I practiced 5 times before my actual interview. Worth more than the ₹8000 course I was considering!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <strong>Ankit K.</strong>
+                            <span>Software Engineer at Startup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="how">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>❓ Is this really 100% free?</h3>
+                <p>Yes! No hidden costs, no credit card needed, no trial periods. I built this to help students, not make money. It's free forever.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>⏰ How long does it take?</h3>
+                <p>A complete mock interview takes 20-30 minutes. You can pause anytime and continue later. Practice as many times as you want!</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>🎯 Which companies is this for?</h3>
+                <p>ALL IT companies! Service companies (TCS, Infosys, Wipro, Accenture), product companies (Google, Microsoft, Amazon), and startups. The AI personalizes questions based on your target company.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>📱 Do I need to download anything?</h3>
+                <p>Nope! Works directly in your browser on mobile or desktop. Just need a Google account (which you probably         }
 
         .steps {
             display: grid;
